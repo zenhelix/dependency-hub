@@ -14,6 +14,7 @@
 
 import Branches.MAIN_BRANCH_NAME
 import Environment.GITHUB_TOKEN_ENV
+import Environment.ORGANIZATION_NAME
 import Secrets.ZENHELIX_COMMITER_APP_ID
 import Secrets.ZENHELIX_COMMITER_APP_PRIVATE_KEY
 import io.github.typesafegithub.workflows.actions.actions.Checkout
@@ -29,6 +30,7 @@ import io.github.typesafegithub.workflows.domain.RunnerType.UbuntuLatest
 import io.github.typesafegithub.workflows.domain.triggers.PullRequest
 import io.github.typesafegithub.workflows.domain.triggers.PullRequest.Type.Closed
 import io.github.typesafegithub.workflows.domain.triggers.Push
+import io.github.typesafegithub.workflows.dsl.expressions.contexts.EnvContext
 import io.github.typesafegithub.workflows.dsl.expressions.contexts.SecretsContext
 import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
@@ -43,6 +45,7 @@ object Secrets {
 
 object Environment {
     const val GITHUB_TOKEN_ENV = "GITHUB_TOKEN"
+    val EnvContext.ORGANIZATION_NAME by EnvContext.propertyToExprPath
 }
 
 object Branches {
@@ -79,7 +82,7 @@ workflow(
             action = WorkflowApplicationTokenAction_Untyped(
                 applicationId_Untyped = expr { secrets.ZENHELIX_COMMITER_APP_ID },
                 applicationPrivateKey_Untyped = expr { secrets.ZENHELIX_COMMITER_APP_PRIVATE_KEY },
-                organization_Untyped = "zenhelix"
+                organization_Untyped = expr { env.ORGANIZATION_NAME }
             )
         ).outputs.token
         uses(
