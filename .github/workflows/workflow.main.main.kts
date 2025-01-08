@@ -78,7 +78,8 @@ workflow(
             name = "Get Token",
             action = WorkflowApplicationTokenAction_Untyped(
                 applicationId_Untyped = expr { secrets.ZENHELIX_COMMITER_APP_ID },
-                applicationPrivateKey_Untyped = expr { secrets.ZENHELIX_COMMITER_APP_PRIVATE_KEY }
+                applicationPrivateKey_Untyped = expr { secrets.ZENHELIX_COMMITER_APP_PRIVATE_KEY },
+                organization_Untyped = "zenhelix"
             )
         ).outputs.token
         uses(
