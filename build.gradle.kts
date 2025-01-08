@@ -14,8 +14,8 @@ subprojects {
 
     publishing {
         repositories {
-            maven("https://central.sonatype.com") {
-                name = "central"
+            maven("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                name = "central-release"
                 credentials {
                     this.username = System.getProperty("MAVEN_SONATYPE_USERNAME") ?: System.getenv("MAVEN_SONATYPE_USERNAME")
                     this.password = System.getProperty("MAVEN_SONATYPE_TOKEN") ?: System.getenv("MAVEN_SONATYPE_TOKEN")
