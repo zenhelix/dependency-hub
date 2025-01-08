@@ -17,9 +17,11 @@ import Environment.REPO_USERNAME_ENV
 import Environment.SIGNING_KEY_ENV
 import Environment.SIGNING_KEY_ID_ENV
 import Environment.SIGNING_PASSWORD_ENV
+import Environment.SIGNING_PUB_KEY_ENV
 import Secrets.MAVEN_SONATYPE_SIGNING_KEY_ASCII_ARMORED
 import Secrets.MAVEN_SONATYPE_SIGNING_KEY_ID
 import Secrets.MAVEN_SONATYPE_SIGNING_PASSWORD
+import Secrets.MAVEN_SONATYPE_SIGNING_PUB_KEY_ASCII_ARMORED
 import Secrets.MAVEN_SONATYPE_TOKEN
 import Secrets.MAVEN_SONATYPE_USERNAME
 import io.github.typesafegithub.workflows.actions.actions.Checkout
@@ -45,6 +47,7 @@ object Secrets {
     val SecretsContext.MAVEN_SONATYPE_TOKEN by SecretsContext.propertyToExprPath
 
     val SecretsContext.MAVEN_SONATYPE_SIGNING_KEY_ID by SecretsContext.propertyToExprPath
+    val SecretsContext.MAVEN_SONATYPE_SIGNING_PUB_KEY_ASCII_ARMORED by SecretsContext.propertyToExprPath
     val SecretsContext.MAVEN_SONATYPE_SIGNING_KEY_ASCII_ARMORED by SecretsContext.propertyToExprPath
     val SecretsContext.MAVEN_SONATYPE_SIGNING_PASSWORD by SecretsContext.propertyToExprPath
 }
@@ -56,6 +59,7 @@ object Environment {
     const val REPO_PASSWORD_ENV = "MAVEN_SONATYPE_TOKEN"
 
     const val SIGNING_KEY_ID_ENV = "ORG_GRADLE_PROJECT_signingKeyId"
+    const val SIGNING_PUB_KEY_ENV = "ORG_GRADLE_PROJECT_signingPublicKey"
     const val SIGNING_KEY_ENV = "ORG_GRADLE_PROJECT_signingKey"
     const val SIGNING_PASSWORD_ENV = "ORG_GRADLE_PROJECT_signingPassword"
 }
@@ -86,11 +90,12 @@ workflow(
         uses(name = "Set up Java", action = SetupJava(javaVersion = "21", distribution = Temurin))
         run(
             name = "Publish",
-            command = "./gradlew publish -Pversion='${expr { tag }}'",
+            command = "./gradlew publish jreleaserSign jreleaserDeploy -Pversion='${expr { tag }}' -Djreleaser.github.token=fake",
             env = mapOf(
                 REPO_USERNAME_ENV to expr { secrets.MAVEN_SONATYPE_USERNAME },
                 REPO_PASSWORD_ENV to expr { secrets.MAVEN_SONATYPE_TOKEN },
                 SIGNING_KEY_ID_ENV to expr { secrets.MAVEN_SONATYPE_SIGNING_KEY_ID },
+                SIGNING_PUB_KEY_ENV to expr { secrets.MAVEN_SONATYPE_SIGNING_PUB_KEY_ASCII_ARMORED },
                 SIGNING_KEY_ENV to expr { secrets.MAVEN_SONATYPE_SIGNING_KEY_ASCII_ARMORED },
                 SIGNING_PASSWORD_ENV to expr { secrets.MAVEN_SONATYPE_SIGNING_PASSWORD }
             )
