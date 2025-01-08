@@ -43,7 +43,6 @@ jobs:
       with:
         application_private_key: '${{ secrets.ZENHELIX_COMMITER_APP_PRIVATE_KEY }}'
         application_id: '${{ secrets.ZENHELIX_COMMITER_APP_ID }}'
-        organization: '${{ ORGANIZATION_NAME }}'
     - id: 'step-5'
       name: 'Bump version and push tag'
       uses: 'anothrNick/github-tag-action@v1'
