@@ -71,7 +71,7 @@ configure(subprojects.filter { it.name.contains("-bom") }) {
         val signingKey: String? by project
         // ORG_GRADLE_PROJECT_signingPassword
         val signingPassword: String? by project
-        useInMemoryPgpKeys(signingKey, signingPassword)
+        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
 
         sign(publishing.publications["javaPlatform"])
     }
@@ -115,7 +115,7 @@ configure(subprojects.filter { it.name.contains("-toml") }) {
         val signingKey: String? by project
         // ORG_GRADLE_PROJECT_signingPassword
         val signingPassword: String? by project
-        useInMemoryPgpKeys( signingKey, signingPassword)
+        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
 
         sign(publishing.publications["versionCatalog"])
     }
