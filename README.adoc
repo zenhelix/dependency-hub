@@ -62,7 +62,7 @@ dependencies {
 ----
 ====
 
-=== gradle-plugins-dev-dev
+=== gradle-plugins-dev
 
 .gradle-plugins-dev-toml
 [%collapsible]
@@ -112,6 +112,60 @@ dependencies {
 ----
 dependencies {
     implementation(platform("io.github.zenhelix:gradle-plugins-dev-bom:{versionPlaceholder}"))
+}
+----
+====
+
+=== multiplatform-client-android-platform-dev
+
+.multiplatform-client-android-platform-toml
+[%collapsible]
+====
+
+*Installation*
+
+.settings.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from("io.github.zenhelix:multiplatform-client-android-platform-toml:{versionPlaceholder}")
+        }
+    }
+}
+----
+
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+plugins {
+    alias(libs.somePlugin)
+}
+----
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(libs.someDependency)
+}
+----
+
+====
+
+.multiplatform-client-android-platform-bom
+[%collapsible]
+====
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(platform("io.github.zenhelix:multiplatform-client-android-platform-bom:{versionPlaceholder}"))
 }
 ----
 ====
