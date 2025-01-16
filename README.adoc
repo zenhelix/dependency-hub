@@ -116,7 +116,7 @@ dependencies {
 ----
 ====
 
-=== multiplatform-client-android-platform-dev
+=== multiplatform-client-android-platform
 
 .multiplatform-client-android-platform-toml
 [%collapsible]
