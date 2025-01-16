@@ -90,7 +90,7 @@ workflow(
         uses(name = "Set up Java", action = SetupJava(javaVersion = "21", distribution = Temurin))
         run(
             name = "Publish",
-            command = "./gradlew publish jreleaserSign jreleaserDeploy -Pversion='${expr { tag }}' -Djreleaser.github.token=fake",
+            command = "./gradlew publish -Pversion='${expr { tag }}'",
             env = mapOf(
                 REPO_USERNAME_ENV to expr { secrets.MAVEN_SONATYPE_USERNAME },
                 REPO_PASSWORD_ENV to expr { secrets.MAVEN_SONATYPE_TOKEN },

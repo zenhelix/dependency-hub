@@ -1,0 +1,122 @@
+:source-highlighter: highlight.js
+:versionPlaceholder: x.y.z
+
+= Dependency Hub
+
+A centralized hub 🎯 for all your Kotlin projects!
+📦 This powerhouse consolidates shared libraries, tools, and frameworks, making dependency management a breeze.
+
+== Installation 🛠️ And Usage 🚀
+
+=== gradle-plugins
+
+.gradle-plugins-toml
+[%collapsible]
+====
+
+*Installation*
+
+.settings.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("gradlePlugins") {
+            from("io.github.zenhelix:gradle-plugins-toml:{versionPlaceholder}")
+        }
+    }
+}
+----
+
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+plugins {
+    alias(gradlePlugins.somePlugin)
+}
+----
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(gradlePlugins.someDependency)
+}
+----
+
+====
+
+.gradle-plugins-bom
+[%collapsible]
+====
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(platform("io.github.zenhelix:gradle-plugins-bom:{versionPlaceholder}"))
+}
+----
+====
+
+=== gradle-plugins-dev-dev
+
+.gradle-plugins-dev-toml
+[%collapsible]
+====
+
+*Installation*
+
+.settings.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("gradlePluginsDev") {
+            from("io.github.zenhelix:gradle-plugins-dev-toml:{versionPlaceholder}")
+        }
+    }
+}
+----
+
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+plugins {
+    alias(gradlePluginsDev.somePlugin)
+}
+----
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(gradlePluginsDev.someDependency)
+}
+----
+
+====
+
+.gradle-plugins-dev-bom
+[%collapsible]
+====
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(platform("io.github.zenhelix:gradle-plugins-dev-bom:{versionPlaceholder}"))
+}
+----
+====
+
+== License 📜
+
+Licensed under the **Apache License, Version 2.0**.
+For more details, see the link:LICENSE[LICENSE file] in the root of this repository.

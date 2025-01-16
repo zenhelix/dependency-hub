@@ -1,111 +1,69 @@
-import org.jreleaser.model.Active
-import org.jreleaser.model.Http
-import org.jreleaser.model.Signing.Mode
+val platformComponentName: String = "javaPlatform"
+val catalogComponentName: String = "versionCatalog"
 
 plugins {
-    `maven-publish`
     `java-platform`
     `version-catalog`
-    signing
-    id("org.jreleaser") version "1.16.0"
+    id("io.github.zenhelix.maven-central-publish")
 }
-
-// ORG_GRADLE_PROJECT_signingKeyId
-val signingKeyId: String? by project
-// ascii-armored format
-// ORG_GRADLE_PROJECT_signingPublicKey
-val signingPublicKey: String? by project
-// ascii-armored format
-// ORG_GRADLE_PROJECT_signingKey
-val signingKey: String? by project
-// ORG_GRADLE_PROJECT_signingPassword
-val signingPassword: String? by project
-
-val sonatypeUser = System.getProperty("MAVEN_SONATYPE_USERNAME") ?: System.getenv("MAVEN_SONATYPE_USERNAME")
-val sonatypePassword = System.getProperty("MAVEN_SONATYPE_TOKEN") ?: System.getenv("MAVEN_SONATYPE_TOKEN")
 
 allprojects {
     group = "io.github.zenhelix"
 }
 
-val platformComponentName: String = "javaPlatform"
-val catalogComponentName: String = "versionCatalog"
-
-tasks.all {
-    //hotfix jreleaser
-    doFirst {
-        val outputDir = file("build/jreleaser")
-
-        if (!outputDir.exists()) {
-            outputDir.mkdirs()
-        }
-    }
-}
-
-configure(subprojects.filter { it.name.contains("-bom") || it.name.contains("-toml") }) {
-    apply {
-        plugin("maven-publish")
-        plugin("org.jreleaser")
-    }
-
-    tasks.all {
-        //hotfix jreleaser
-        doFirst {
-            val outputDir = file("build/jreleaser")
-
-            if (!outputDir.exists()) {
-                outputDir.mkdirs()
-            }
-        }
-    }
+configure(subprojects.filter { it.childProjects.isEmpty() }.filter { it.name.contains("-bom") || it.name.contains("-toml") }) {
+    apply { plugin("io.github.zenhelix.maven-central-publish") }
 
     publishing {
         repositories {
-            maven { setUrl(layout.buildDirectory.dir("staging-deploy")) }
             mavenLocal()
-        }
-    }
-
-    jreleaser {
-        signing {
-            active = Active.ALWAYS
-            artifacts = true
-            checksums = true
-
-            armored = true
-            verify = true
-            mode = Mode.MEMORY
-
-            passphrase = signingPassword
-            publicKey = signingPublicKey
-            secretKey = signingKey
-        }
-
-        deploy {
-            maven {
-                mavenCentral {
-                    create("sonatype") {
-                        active = Active.ALWAYS
-                        url = "https://central.sonatype.com/api/v1/publisher"
-                        username = sonatypeUser
-                        password = sonatypePassword
-                        authorization = Http.Authorization.BEARER
-                        snapshotSupported = true
-                        stagingRepository("build/staging-deploy")
-                        verifyPom = true
-                        applyMavenCentralRules = true
-                    }
+            mavenCentralPortal {
+                credentials {
+                    username = System.getProperty("MAVEN_SONATYPE_USERNAME") ?: System.getenv("MAVEN_SONATYPE_USERNAME")
+                    password = System.getProperty("MAVEN_SONATYPE_TOKEN") ?: System.getenv("MAVEN_SONATYPE_TOKEN")
                 }
             }
         }
     }
+
+    signing {
+        val signingKeyId: String? by project
+        val signingKey: String? by project
+        val signingPassword: String? by project
+
+        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+        sign(publishing.publications)
+    }
+
+    publishing.publications.withType<MavenPublication> {
+        pom {
+            description = "A set of common dependencies"
+            url = "https://github.com/zenhelix/zenhelix-dependencies"
+            licenses {
+                license {
+                    name = "The Apache License, Version 2.0"
+                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            }
+            scm {
+                connection = "scm:git:git://github.com/zenhelix/zenhelix-dependencies.git"
+                developerConnection = "scm:git:ssh://github.com/zenhelix/zenhelix-dependencies.git"
+                url = "https://github.com/zenhelix/zenhelix-dependencies"
+            }
+            developers {
+                developer {
+                    id = "dm.medakin"
+                    name = "Dmitrii Medakin"
+                    email = "dm.medakin.online@gmail.com"
+                }
+            }
+        }
+    }
+
 }
 
 configure(subprojects.filter { it.name.contains("-bom") }) {
-    apply {
-        plugin("java-platform")
-        plugin("signing")
-    }
+    apply { plugin("java-platform") }
 
     javaPlatform {
         allowDependencies()
@@ -115,64 +73,21 @@ configure(subprojects.filter { it.name.contains("-bom") }) {
         publications {
             create<MavenPublication>("javaPlatform") {
                 from(components[platformComponentName])
-
-                pom {
-                    description = "A set of common dependencies"
-                    url = "https://github.com/zenhelix/zenhelix-dependencies"
-                    licenses {
-                        license {
-                            name = "The Apache License, Version 2.0"
-                            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                        }
-                    }
-                    scm {
-                        connection = "scm:git:git://github.com/zenhelix/zenhelix-dependencies.git"
-                        developerConnection = "scm:git:ssh://github.com/zenhelix/zenhelix-dependencies.git"
-                        url = "https://github.com/zenhelix/zenhelix-dependencies"
-                    }
-                }
             }
         }
     }
 
-    //    signing {
-    //        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-    //        sign(publishing.publications["javaPlatform"])
-    //    }
 }
 
 configure(subprojects.filter { it.name.contains("-toml") }) {
-    apply {
-        plugin("version-catalog")
-        plugin("signing")
-    }
+    apply { plugin("version-catalog") }
 
     publishing {
         publications {
             create<MavenPublication>("versionCatalog") {
                 from(components[catalogComponentName])
-
-                pom {
-                    description = "A set of common dependencies"
-                    url = "https://github.com/zenhelix/zenhelix-dependencies"
-                    licenses {
-                        license {
-                            name = "The Apache License, Version 2.0"
-                            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                        }
-                    }
-                    scm {
-                        connection = "scm:git:git://github.com/zenhelix/zenhelix-dependencies.git"
-                        developerConnection = "scm:git:ssh://github.com/zenhelix/zenhelix-dependencies.git"
-                        url = "https://github.com/zenhelix/zenhelix-dependencies"
-                    }
-                }
             }
         }
     }
 
-    //    signing {
-    //        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-    //        sign(publishing.publications["versionCatalog"])
-    //    }
 }
