@@ -26,14 +26,14 @@ configure(subprojects.filter { it.childProjects.isEmpty() }.filter { it.name.con
         }
     }
 
-    signing {
-        val signingKeyId: String? by project
-        val signingKey: String? by project
-        val signingPassword: String? by project
-
-        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-        sign(publishing.publications)
-    }
+//    signing {
+//        val signingKeyId: String? by project
+//        val signingKey: String? by project
+//        val signingPassword: String? by project
+//
+//        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+//        sign(publishing.publications)
+//    }
 
     publishing.publications.withType<MavenPublication> {
         pom {

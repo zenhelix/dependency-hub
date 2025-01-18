@@ -2,16 +2,16 @@ catalog {
     versionCatalog {
         library(
             "kotlin-jvm-gradle-plugin",
-            "org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:${libs.versions.kotlin}"
+            "org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:${libs.versions.kotlin.asProvider().get()}"
         )
         library(
             "compose-compiler-gradle-plugin",
-            "org.jetbrains.kotlin:compose-compiler-gradle-plugin:${libs.versions.kotlin}"
+            "org.jetbrains.kotlin:compose-compiler-gradle-plugin:${libs.versions.kotlin.asProvider().get()}"
         )
-        library("kotlin-gradle-plugin", "org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin}")
-        library("kotlin-allopen-gradle-plugin", "org.jetbrains.kotlin:kotlin-allopen:${libs.versions.kotlin}")
-        library("kotlin-noarg-gradle-plugin", "org.jetbrains.kotlin:kotlin-noarg:${libs.versions.kotlin}")
-        library("kotlin-lombok-gradle-plugin", "org.jetbrains.kotlin:kotlin-lombok:${libs.versions.kotlin}")
+        library("kotlin-gradle-plugin", "org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.asProvider().get()}")
+        library("kotlin-allopen-gradle-plugin", "org.jetbrains.kotlin:kotlin-allopen:${libs.versions.kotlin.asProvider().get()}")
+        library("kotlin-noarg-gradle-plugin", "org.jetbrains.kotlin:kotlin-noarg:${libs.versions.kotlin.asProvider().get()}")
+        library("kotlin-lombok-gradle-plugin", "org.jetbrains.kotlin:kotlin-lombok:${libs.versions.kotlin.asProvider().get()}")
 
         library("lombok-gradle-plugin", "io.freefair.gradle:lombok-plugin:${libs.versions.lombok.get()}")
 
