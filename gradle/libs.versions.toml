@@ -6,10 +6,10 @@ kotlin-window = "1.4.0-alpha01"
 
 androidGradlePlugin = "8.2.0"
 
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 
 kotlinx-datetime = "0.6.1"
-kotlinx-serialization = "1.7.3"
+kotlinx-serialization = "1.8.0"
 kotlinx-coroutines = "1.10.1"
 
 kotlin-logger = "7.0.3"
@@ -29,7 +29,7 @@ voyager = "1.0.1"
 jackson = "2.18.2"
 assertj = "3.25.3"
 lombok = "8.10"
-spring-boot = "3.4.1"
+spring-boot = "3.4.2"
 
 [libraries]
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
