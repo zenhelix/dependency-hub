@@ -8,7 +8,7 @@ catalog {
 
         library("kotlin-test", "org.jetbrains.kotlin", "kotlin-test").withoutVersion()
         library("kotlinx-datetime", libs.kotlinx.datetime.get().toString())
-        library("kotlin-logging", libs.kotlin.logging.get().toString())
+        library("kotlin-logging", libs.kotlin.logging.asProvider().get().toString())
 
         library("androidx-activity-compose", libs.androidx.activity.compose.get().toString())
 

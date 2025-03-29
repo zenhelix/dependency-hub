@@ -30,7 +30,7 @@ catalog {
         library("assertj-bom", libs.assertj.bom.get().toString())
         library("jackson-bom", libs.jackson.bom.get().toString())
 
-        libs.plugins.kotlin.jvm.get().also {
+        libs.plugins.kotlin.jvm.asProvider().get().also {
             plugin("kotlin-jvm", it.pluginId).version(it.version.toString())
         }
     }
