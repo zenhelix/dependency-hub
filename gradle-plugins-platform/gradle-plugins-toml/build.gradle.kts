@@ -28,7 +28,7 @@ catalog {
             "com.android.tools.build:gradle:${libs.versions.androidGradlePlugin.get()}"
         )
 
-        libs.plugins.kotlin.jvm.get().also {
+        libs.plugins.kotlin.jvm.asProvider().get().also {
             plugin("kotlin-jvm", it.pluginId).version(it.version.toString())
         }
     }

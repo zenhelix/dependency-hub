@@ -44,6 +44,24 @@ project("gradle-plugins-dev-platform") {
     include("gradle-plugins-dev-toml")
 }
 
+project("spring-jvm-platform") {
+    include("spring-jvm8-bom")
+    include("spring-jvm8-toml")
+    include("spring-jvm8-plugin-toml")
+
+    include("spring-jvm11-bom")
+    include("spring-jvm11-toml")
+    include("spring-jvm11-plugin-toml")
+
+    include("spring-jvm17-bom")
+    include("spring-jvm17-toml")
+    include("spring-jvm17-plugin-toml")
+
+    include("spring-jvm21-bom")
+    include("spring-jvm21-toml")
+    include("spring-jvm21-plugin-toml")
+}
+
 private fun Settings.project(
     baseProject: String, initializer: IncludeContext.() -> Unit = {}
 ): IncludeContext = IncludeContext(baseProject, this).apply(initializer)
@@ -76,6 +94,6 @@ pluginManagement {
     }
 
     plugins {
-        id("io.github.zenhelix.maven-central-publish") version "0.3.0"
+        id("io.github.zenhelix.maven-central-publish") version "0.5.0"
     }
 }

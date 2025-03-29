@@ -8,7 +8,7 @@ catalog {
 
         library("kotlin-test", "org.jetbrains.kotlin", "kotlin-test").withoutVersion()
         library("kotlinx-datetime", libs.kotlinx.datetime.get().toString())
-        library("kotlin-logging", libs.kotlin.logging.get().toString())
+        library("kotlin-logging", libs.kotlin.logging.asProvider().get().toString())
         library("logback-classic", libs.logback.classic.get().toString())
         library("slf4j-api", "org.slf4j", "slf4j-api").version(libs.versions.slf4j.get())
 
