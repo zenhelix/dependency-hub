@@ -5,6 +5,10 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "dependency-hub"
 
 project("multiplatform-client") {
+    project("multiplatform-client-platform") {
+        include("multiplatform-client-bom")
+        include("multiplatform-client-toml")
+    }
     project("multiplatform-client-android-platform") {
         include("multiplatform-client-android-bom")
         include("multiplatform-client-android-toml")
@@ -20,10 +24,6 @@ project("multiplatform-client") {
     project("multiplatform-client-desktop-platform") {
         include("multiplatform-client-desktop-bom")
         include("multiplatform-client-desktop-toml")
-    }
-    project("multiplatform-client-platform") {
-        include("multiplatform-client-bom")
-        include("multiplatform-client-toml")
     }
 }
 
@@ -55,29 +55,6 @@ project("gradle-plugins-platform") {
 project("gradle-plugins-dev-platform") {
     include("gradle-plugins-dev-bom")
     include("gradle-plugins-dev-toml")
-}
-
-project("spring-jvm-platform") {
-    project("spring-jvm8") {
-        include("spring-jvm8-bom")
-        include("spring-jvm8-toml")
-        include("spring-jvm8-plugin-toml")
-    }
-    project("spring-jvm11") {
-        include("spring-jvm11-bom")
-        include("spring-jvm11-toml")
-        include("spring-jvm11-plugin-toml")
-    }
-    project("spring-jvm17") {
-        include("spring-jvm17-bom")
-        include("spring-jvm17-toml")
-        include("spring-jvm17-plugin-toml")
-    }
-    project("spring-jvm21") {
-        include("spring-jvm21-bom")
-        include("spring-jvm21-toml")
-        include("spring-jvm21-plugin-toml")
-    }
 }
 
 private fun Settings.project(
