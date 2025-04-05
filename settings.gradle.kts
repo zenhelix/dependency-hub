@@ -58,21 +58,26 @@ project("gradle-plugins-dev-platform") {
 }
 
 project("spring-jvm-platform") {
-    include("spring-jvm8-bom")
-    include("spring-jvm8-toml")
-    include("spring-jvm8-plugin-toml")
-
-    include("spring-jvm11-bom")
-    include("spring-jvm11-toml")
-    include("spring-jvm11-plugin-toml")
-
-    include("spring-jvm17-bom")
-    include("spring-jvm17-toml")
-    include("spring-jvm17-plugin-toml")
-
-    include("spring-jvm21-bom")
-    include("spring-jvm21-toml")
-    include("spring-jvm21-plugin-toml")
+    project("spring-jvm8") {
+        include("spring-jvm8-bom")
+        include("spring-jvm8-toml")
+        include("spring-jvm8-plugin-toml")
+    }
+    project("spring-jvm11") {
+        include("spring-jvm11-bom")
+        include("spring-jvm11-toml")
+        include("spring-jvm11-plugin-toml")
+    }
+    project("spring-jvm17") {
+        include("spring-jvm17-bom")
+        include("spring-jvm17-toml")
+        include("spring-jvm17-plugin-toml")
+    }
+    project("spring-jvm21") {
+        include("spring-jvm21-bom")
+        include("spring-jvm21-toml")
+        include("spring-jvm21-plugin-toml")
+    }
 }
 
 private fun Settings.project(
