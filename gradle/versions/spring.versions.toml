@@ -1,0 +1,182 @@
+[versions]
+# Spring Boot versions
+springBoot2 = "2.7.18"
+spring-boot = "3.4.4"
+
+# Spring Cloud versions
+springCloudSpringBoot2 = "2021.0.9"
+springCloud = "2024.0.1"
+
+# Spring Security Kerberos
+springSecurityKerberosSpring5 = "1.0.1.RELEASE"
+springSecurityKerberos = "2.1.1"
+
+# Spring Doc (OpenAPI)
+springDocSpring5 = "1.8.0"
+springDoc = "2.8.6"
+
+# IBM MQ
+ibmMqStarterSpringBoot2 = "2.7.18"
+ibmMqStarter = "3.4.3"
+ibmMq = "9.4.2.0"
+
+# Liquibase
+liquibaseR2dbcStarterSpringBoot2 = "2.7.15"
+liquibaseR2dbcStarter = "3.1.3"
+
+# Springwolf
+springwolf = "1.11.0"
+
+# WireMock
+wiremockStarter = "3.9.0"
+wiremock = "3.12.1"
+wiremockJava8 = "2.35.1"
+
+# Kerb4j
+kerb4jJava8 = "0.1.4"
+kerb4j = "0.2.0"
+
+# Transaction outbox
+transactionOutboxSpring5 = "5.2.337"
+transactionOutbox = "6.0.585"
+
+# Jobrunr
+jobrunr = "7.4.1"
+
+# Nimbus JWT/OAuth
+nimbusJoseJwtSpring5 = "9.24.4"
+nimbusOidcSdkSpring5 = "9.43.3"
+nimbusJoseJwt = "9.37.3"
+nimbusOidcSdk = "9.43.3"
+
+# Other Spring libraries
+logbook = "3.11.0"
+shedlockSpring5 = "4.47.0"
+shedlock = "5.16.0"
+resilience4jJava8 = "1.7.0"
+resilience4j = "2.3.0"
+micrometerContextPropagation = "1.1.2"
+confluent = "7.7.1"
+cxfJava8 = "3.6.3"
+cxf = "4.0.5"
+jakartaJws = "3.0.0"
+jvnetJaxbJava8 = "3.0.2"
+jvnetJaxb = "4.0.8"
+
+# Hibernate
+hibernateTypes = "3.9.5"
+
+[libraries]
+# Spring Boot
+spring-boot-dependencies-spring-boot2 = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot2" }
+spring-cloud-dependencies-spring-boot2 = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloudSpringBoot2" }
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
+
+# Spring Security Kerberos
+spring-security-kerberos-bom = { module = "org.springframework.security.kerberos:spring-security-kerberos-bom", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-core = { module = "org.springframework.security.kerberos:spring-security-kerberos-core", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-client = { module = "org.springframework.security.kerberos:spring-security-kerberos-client", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-web = { module = "org.springframework.security.kerberos:spring-security-kerberos-web", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-test = { module = "org.springframework.security.kerberos:spring-security-kerberos-test", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-core-spring5 = { module = "org.springframework.security.kerberos:spring-security-kerberos-core", version.ref = "springSecurityKerberosSpring5" }
+spring-security-kerberos-web-spring5 = { module = "org.springframework.security.kerberos:spring-security-kerberos-web", version.ref = "springSecurityKerberosSpring5" }
+
+# IBM MQ
+mq-jms-spring-boot-starter-spring-boot2 = { module = "com.ibm.mq:mq-jms-spring-boot-starter", version.ref = "ibmMqStarterSpringBoot2" }
+mq-jms-spring-boot-starter = { module = "com.ibm.mq:mq-jms-spring-boot-starter", version.ref = "ibmMqStarter" }
+ibm-mq-allclient = { module = "com.ibm.mq:com.ibm.mq.allclient", version.ref = "ibmMq" }
+ibm-mq-jakarta-client = { module = "com.ibm.mq:com.ibm.mq.jakarta.client", version.ref = "ibmMq" }
+
+# Spring Doc (OpenAPI)
+springdoc-openapi-webmvc-core-spring5 = { module = "org.springdoc:springdoc-openapi-webmvc-core", version.ref = "springDocSpring5" }
+springdoc-openapi-common-spring5 = { module = "org.springdoc:springdoc-openapi-common", version.ref = "springDocSpring5" }
+springdoc-openapi-ui-spring5 = { module = "org.springdoc:springdoc-openapi-ui", version.ref = "springDocSpring5" }
+springdoc-openapi-webflux-ui-spring5 = { module = "org.springdoc:springdoc-openapi-webflux-ui", version.ref = "springDocSpring5" }
+springdoc-openapi-security-spring5 = { module = "org.springdoc:springdoc-openapi-security", version.ref = "springDocSpring5" }
+springdoc-openapi-kotlin-spring5 = { module = "org.springdoc:springdoc-openapi-kotlin", version.ref = "springDocSpring5" }
+springdoc-openapi-starter-common = { module = "org.springdoc:springdoc-openapi-starter-common", version.ref = "springDoc" }
+springdoc-openapi-starter-webmvc-api = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "springDoc" }
+springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springDoc" }
+springdoc-openapi-starter-webflux-api = { module = "org.springdoc:springdoc-openapi-starter-webflux-api", version.ref = "springDoc" }
+springdoc-openapi-starter-webflux-ui = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui", version.ref = "springDoc" }
+
+# Springwolf
+springwolf-kafka = { module = "io.github.springwolf:springwolf-kafka", version.ref = "springwolf" }
+springwolf-sns = { module = "io.github.springwolf:springwolf-sns", version.ref = "springwolf" }
+springwolf-sqs = { module = "io.github.springwolf:springwolf-sqs", version.ref = "springwolf" }
+springwolf-stomp = { module = "io.github.springwolf:springwolf-stomp", version.ref = "springwolf" }
+springwolf-amqp = { module = "io.github.springwolf:springwolf-amqp", version.ref = "springwolf" }
+springwolf-jms = { module = "io.github.springwolf:springwolf-jms", version.ref = "springwolf" }
+springwolf-cloud-stream = { module = "io.github.springwolf:springwolf-cloud-stream", version.ref = "springwolf" }
+springwolf-ui = { module = "io.github.springwolf:springwolf-ui", version.ref = "springwolf" }
+springwolf-common-model-converters = { module = "io.github.springwolf:springwolf-common-model-converters", version.ref = "springwolf" }
+springwolf-generic-binding = { module = "io.github.springwolf:springwolf-generic-binding", version.ref = "springwolf" }
+springwolf-json-schema = { module = "io.github.springwolf:springwolf-json-schema", version.ref = "springwolf" }
+
+# Kerb4j
+kerb4j-server-spring-security-java8 = { module = "com.kerb4j:kerb4j-server-spring-security", version.ref = "kerb4jJava8" }
+kerb4j-server-spring-security = { module = "com.kerb4j:kerb4j-server-spring-security", version.ref = "kerb4j" }
+
+# Liquibase
+liquibase-r2dbc-spring-boot-starter-spring-boot2 = { module = "io.github.daggerok:liquibase-r2dbc-spring-boot-starter", version.ref = "liquibaseR2dbcStarterSpringBoot2" }
+liquibase-r2dbc-spring-boot-starter = { module = "io.github.daggerok:liquibase-r2dbc-spring-boot-starter", version.ref = "liquibaseR2dbcStarter" }
+db-scheduler-spring-boot-starter = { module = "com.github.kagkarlsson:db-scheduler-spring-boot-starter", version.ref = "dbScheduler" }
+
+# Transaction Outbox
+transactionoutbox-core-java8 = { module = "com.gruelbox:transactionoutbox-core", version.ref = "transactionOutboxSpring5" }
+transactionoutbox-spring-java8 = { module = "com.gruelbox:transactionoutbox-spring", version.ref = "transactionOutboxSpring5" }
+transactionoutbox-jackson-java8 = { module = "com.gruelbox:transactionoutbox-jackson", version.ref = "transactionOutboxSpring5" }
+transactionoutbox-core = { module = "com.gruelbox:transactionoutbox-core", version.ref = "transactionOutbox" }
+transactionoutbox-spring = { module = "com.gruelbox:transactionoutbox-spring", version.ref = "transactionOutbox" }
+transactionoutbox-jackson = { module = "com.gruelbox:transactionoutbox-jackson", version.ref = "transactionOutbox" }
+
+# Jobrunr
+jobrunr = { module = "org.jobrunr:jobrunr", version.ref = "jobrunr" }
+jobrunr-spring-boot2-starter = { module = "org.jobrunr:jobrunr-spring-boot-2-starter", version.ref = "jobrunr" }
+jobrunr-spring-boot3-starter = { module = "org.jobrunr:jobrunr-spring-boot-3-starter", version.ref = "jobrunr" }
+jobrunr-kotlin19-support = { module = "org.jobrunr:jobrunr-kotlin-1.9-support", version.ref = "jobrunr" }
+jobrunr-kotlin20-support = { module = "org.jobrunr:jobrunr-kotlin-2.0-support", version.ref = "jobrunr" }
+
+# WireMock
+wiremock-spring-boot = { module = "org.wiremock.integrations:wiremock-spring-boot", version.ref = "wiremockStarter" }
+wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
+wiremock-jre8 = { module = "com.github.tomakehurst:wiremock-jre8", version.ref = "wiremockJava8" }
+
+# Nimbus JWT/OAuth
+oauth2-oidc-sdk-spring5 = { module = "com.nimbusds:oauth2-oidc-sdk", version.ref = "nimbusOidcSdkSpring5" }
+nimbus-jose-jwt-spring5 = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbusJoseJwtSpring5" }
+oauth2-oidc-sdk = { module = "com.nimbusds:oauth2-oidc-sdk", version.ref = "nimbusOidcSdk" }
+nimbus-jose-jwt = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbusJoseJwt" }
+
+# Jakarta
+jakarta-jws-api = { module = "jakarta.jws:jakarta.jws-api", version.ref = "jakartaJws" }
+
+# JAXB
+jaxb-plugins-runtime-java8 = { module = "org.jvnet.jaxb:jaxb-plugins-runtime", version.ref = "jvnetJaxbJava8" }
+jaxb-plugins-java8 = { module = "org.jvnet.jaxb:jaxb-plugins", version.ref = "jvnetJaxbJava8" }
+jaxb-plugins-runtime = { module = "org.jvnet.jaxb:jaxb-plugins-runtime", version.ref = "jvnetJaxb" }
+jaxb-plugins = { module = "org.jvnet.jaxb:jaxb-plugins", version.ref = "jvnetJaxb" }
+
+# Misc Spring Libraries
+logbook-bom = { module = "org.zalando:logbook-bom", version.ref = "logbook" }
+shedlock-bom-java8 = { module = "net.javacrumbs.shedlock:shedlock-bom", version.ref = "shedlockSpring5" }
+shedlock-bom = { module = "net.javacrumbs.shedlock:shedlock-bom", version.ref = "shedlock" }
+shedlock-provider-jdbc-java8 = { module = "net.javacrumbs.shedlock:shedlock-provider-jdbc", version.ref = "shedlockSpring5" }
+shedlock-provider-jdbc = { module = "net.javacrumbs.shedlock:shedlock-provider-jdbc", version.ref = "shedlock" }
+resilience4j-bom-java8 = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4jJava8" }
+resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
+cxf-bom-java8 = { module = "org.apache.cxf:cxf-bom", version.ref = "cxfJava8" }
+cxf-bom = { module = "org.apache.cxf:cxf-bom", version.ref = "cxf" }
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version.ref = "confluent" }
+micrometer-context-propagation = { module = "io.micrometer:context-propagation", version.ref = "micrometerContextPropagation" }
+
+# Hibernate
+hypersistence-utils-hibernate55 = { module = "io.hypersistence:hypersistence-utils-hibernate-55", version.ref = "hibernateTypes" }
+hypersistence-utils-hibernate60 = { module = "io.hypersistence:hypersistence-utils-hibernate-60", version.ref = "hibernateTypes" }
+hypersistence-utils-hibernate62 = { module = "io.hypersistence:hypersistence-utils-hibernate-62", version.ref = "hibernateTypes" }
+hypersistence-utils-hibernate63 = { module = "io.hypersistence:hypersistence-utils-hibernate-63", version.ref = "hibernateTypes" }
+
+[plugins]
+springBoot2 = { id = "org.springframework.boot", version.ref = "springBoot2" }
+springBoot = { id = "org.springframework.boot", version.ref = "spring-boot" }
