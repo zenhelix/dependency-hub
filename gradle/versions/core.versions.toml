@@ -1,0 +1,85 @@
+[versions]
+# Logging
+slf4j = "2.0.17"
+logback-classic = "1.5.18"
+kotlin-logger = "7.0.5"
+logstash-logback-encoder = "8.0"
+logstash-logback-encoder-java8 = "7.4"
+
+# Data formats
+jackson = "2.18.2"
+xstream-java8 = "1.4.20"
+
+# Database & persistence
+sqldelight = "2.0.2"
+quartz = "2.5.0"
+lettuce-core = "6.5.5.RELEASE"
+db-scheduler = "15.3.0"
+
+# Utils
+guava = "33.4.6-jre"
+cron-utils = "9.2.1"
+jasypt = "1.9.3"
+juniversalchardet = "2.5.0"
+apacheCommonsText = "1.12.0"
+threeten-extra = "1.8.0"
+pdfbox = "3.0.3"
+woodstox = "7.1.0"
+nv-i18n = "1.29"
+kotlinx-datetime = "0.6.2"
+apache-httpclient4 = "4.5.14"
+apache-httpclient5 = "5.4"
+apache-poi = "5.3.0"
+fastexcel = "0.18.4"
+kerby = "2.1.0"
+jasperreports = "7.0.2"
+freemarker = "2.3.33"
+kryo-version = "5.6.2"
+
+# Other core dependencies
+lombok = "8.13"
+assertj = "3.25.3"
+
+[libraries]
+# Logging
+slf4j-bom = { module = "org.slf4j:slf4j-bom", version.ref = "slf4j" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "kotlin-logger" }
+logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstash-logback-encoder" }
+logstash-logback-encoder-java8 = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstash-logback-encoder-java8" }
+
+# Utils
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+cron-utils = { module = "com.cronutils:cron-utils", version.ref = "cron-utils" }
+jasypt = { module = "org.jasypt:jasypt", version.ref = "jasypt" }
+juniversalchardet = { module = "com.github.albfernandez:juniversalchardet", version.ref = "juniversalchardet" }
+apacheCommonsText = { module = "org.apache.commons:commons-text", version.ref = "apacheCommonsText" }
+threeten-extra = { module = "org.threeten:threeten-extra", version.ref = "threeten-extra" }
+pdfbox = { module = "org.apache.pdfbox:pdfbox", version.ref = "pdfbox" }
+woodstox-core = { module = "com.fasterxml.woodstox:woodstox-core", version.ref = "woodstox" }
+nv-i18n = { module = "com.neovisionaries:nv-i18n", version.ref = "nv-i18n" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+
+# HTTP & Communication
+apache-httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "apache-httpclient4" }
+apache-httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "apache-httpclient5" }
+
+# Document processing
+poi = { module = "org.apache.poi:poi", version.ref = "apache-poi" }
+poi-ooxml = { module = "org.apache.poi:poi-ooxml", version.ref = "apache-poi" }
+fastexcel = { module = "org.dhatim:fastexcel", version.ref = "fastexcel" }
+fastexcel-reader = { module = "org.dhatim:fastexcel-reader", version.ref = "fastexcel" }
+jasperreports = { module = "net.sf.jasperreports:jasperreports", version.ref = "jasperreports" }
+freemarker = { module = "org.freemarker:freemarker", version.ref = "freemarker" }
+
+# Data formats
+xstream = { module = "com.thoughtworks.xstream:xstream", version.ref = "xstream-java8" }
+kryo = { module = "com.esotericsoftware:kryo", version.ref = "kryo-version" }
+kryo-library = { module = "com.esotericsoftware.kryo:kryo5", version.ref = "kryo-version" }
+
+# Security
+kerby-bom = { module = "org.apache.kerby:kerby-bom", version.ref = "kerby" }
+
+# Other core libraries
+assertj-bom = { module = "org.assertj:assertj-bom", version.ref = "assertj" }
+jackson-bom = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson" }
