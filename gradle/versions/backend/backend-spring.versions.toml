@@ -1,0 +1,214 @@
+[versions]
+# --> spring
+springBoot = "3.4.4"
+springCloud = "2024.0.1" # 2022.0.x aka Kilburn	3.0.x, 3.1.x (Starting with 2022.0.3)
+springSecurityKerberos = "2.1.1"
+ibmMqStarter = "3.4.3"
+liquibaseR2dbcStarter = "3.1.3"
+springDoc = "2.8.6"
+springwolf = "1.11.0"
+wiremockStarter = "3.9.0"
+# <-- spring
+
+# --> kotlin
+kotlin = "1.9.24"
+coroutines = "1.8.1"
+
+kotlinLogging = "6.0.9"
+# <-- kotlin
+
+# --> testing
+testng = "7.11.0"
+junit5 = "5.12.1"
+springMockk = "4.0.2"
+wiremock = "3.12.1"
+testcontainers-redis = "2.2.4"
+mockitoKotlin = "5.4.0"
+# <-- testing
+
+kerb4j = "0.2.0"
+quartz = "2.5.0"
+jakartaJws = "3.0.0"
+logstashLogbackEncoder = "8.0"
+#https://github.com/ibm-messaging/mq-jms-spring/blob/master/build.gradle#L40
+ibmMq = "9.4.2.0"
+jasperReports = "7.0.2"
+hibernateTypes = "3.9.5"
+freemarker = "2.3.33"
+nvi18n = "1.29"
+nimbusJoseJwt = "9.37.3"
+nimbusOidcSdk = "9.43.3"
+logbook = "3.11.0"
+threeten = "1.8.0"
+pdfbox = "3.0.3"
+shedlock = "5.16.0"
+resilience4j = "2.3.0"
+cronUtils = "9.2.1"
+transactionOutbox = "6.0.585"
+woodstox = "7.1.0"
+jasypt = "1.9.3"
+micrometerContextPropagation = "1.1.2"
+dbScheduler = "15.3.0"
+confluent = "7.7.1"
+apachePoi = "5.3.0"
+fastExcel = "0.18.4"
+lettuce = "6.5.5.RELEASE"
+kerby = "2.1.0"
+guava = "33.4.6-jre"
+jUniversalChardet = "2.5.0"
+cxf = "4.0.5"
+xstreamJava8 = "1.4.20" # 1.5 will require Java 11
+jvnetJaxb = "4.0.8"
+apacheHttpClient4 = "4.5.14"
+apacheHttpClient5 = "5.4"
+apacheCommonsText = "1.12.0" # Следить за версиями между lang3 https://github.com/apache/commons-text/blob/master/pom.xml#L89
+jobrunr = "7.4.1"
+greenmail = "2.1.3"
+kryoVersion = "5.6.2"
+
+asciidoctor = "4.0.4"
+lombok = "8.13.1"
+sonarQube = "6.1.0.5360"
+dokka = "2.0.0"
+wsdl2java = "2.0.2"
+xjc = "1.8.2"
+cyclonedxBom = "2.2.0"
+
+[libraries]
+
+# --> spring
+
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
+spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
+
+spring-security-kerberos-bom = { module = "org.springframework.security.kerberos:spring-security-kerberos-bom", version.ref = "springSecurityKerberos" }
+# В версии 2.1.* сломали spring-security-kerberos-bom
+spring-security-kerberos-core = { module = "org.springframework.security.kerberos:spring-security-kerberos-core", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-client = { module = "org.springframework.security.kerberos:spring-security-kerberos-client", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-web = { module = "org.springframework.security.kerberos:spring-security-kerberos-web", version.ref = "springSecurityKerberos" }
+spring-security-kerberos-test = { module = "org.springframework.security.kerberos:spring-security-kerberos-test", version.ref = "springSecurityKerberos" }
+
+mq-jms-spring-boot-starter = { module = "com.ibm.mq:mq-jms-spring-boot-starter", version.ref = "ibmMqStarter" }
+
+springdoc-openapi-starter-common = { module = "org.springdoc:springdoc-openapi-starter-common", version.ref = "springDoc" }
+springdoc-openapi-starter-webmvc-api = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "springDoc" }
+springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springDoc" }
+springdoc-openapi-starter-webflux-api = { module = "org.springdoc:springdoc-openapi-starter-webflux-api", version.ref = "springDoc" }
+springdoc-openapi-starter-webflux-ui = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui", version.ref = "springDoc" }
+
+springwolf-kafka = { module = "io.github.springwolf:springwolf-kafka", version.ref = "springwolf" }
+springwolf-sns = { module = "io.github.springwolf:springwolf-sns", version.ref = "springwolf" }
+springwolf-sqs = { module = "io.github.springwolf:springwolf-sqs", version.ref = "springwolf" }
+springwolf-stomp = { module = "io.github.springwolf:springwolf-stomp", version.ref = "springwolf" }
+springwolf-amqp = { module = "io.github.springwolf:springwolf-amqp", version.ref = "springwolf" }
+springwolf-jms = { module = "io.github.springwolf:springwolf-jms", version.ref = "springwolf" }
+springwolf-cloud-stream = { module = "io.github.springwolf:springwolf-cloud-stream", version.ref = "springwolf" }
+springwolf-ui = { module = "io.github.springwolf:springwolf-ui", version.ref = "springwolf" }
+springwolf-common-model-converters = { module = "io.github.springwolf:springwolf-common-model-converters", version.ref = "springwolf" }
+springwolf-generic-binding = { module = "io.github.springwolf:springwolf-generic-binding", version.ref = "springwolf" }
+springwolf-json-schema = { module = "io.github.springwolf:springwolf-json-schema", version.ref = "springwolf" }
+
+kerb4j-server-spring-security = { module = "com.kerb4j:kerb4j-server-spring-security", version.ref = "kerb4j" }
+
+liquibase-r2dbc-spring-boot-starter = { module = "io.github.daggerok:liquibase-r2dbc-spring-boot-starter", version.ref = "liquibaseR2dbcStarter" }
+db-scheduler-spring-boot-starter = { module = "com.github.kagkarlsson:db-scheduler-spring-boot-starter", version.ref = "dbScheduler" }
+
+transactionoutbox-core = { module = "com.gruelbox:transactionoutbox-core", version.ref = "transactionOutbox" }
+transactionoutbox-spring = { module = "com.gruelbox:transactionoutbox-spring", version.ref = "transactionOutbox" }
+transactionoutbox-jackson = { module = "com.gruelbox:transactionoutbox-jackson", version.ref = "transactionOutbox" }
+
+wiremock-spring-boot = { module = "org.wiremock.integrations:wiremock-spring-boot", version.ref = "wiremockStarter" }
+# <-- spring
+
+# --> kotlin
+
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+kotlinx-coroutines-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom", version.ref = "coroutines" }
+
+kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlinLogging" }
+
+# <-- kotlin
+
+logbook-bom = { module = "org.zalando:logbook-bom", version.ref = "logbook" }
+shedlock-bom = { module = "net.javacrumbs.shedlock:shedlock-bom", version.ref = "shedlock" }
+resilience4j-bom = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4j" }
+cxf-bom = { module = "org.apache.cxf:cxf-bom", version.ref = "cxf" }
+kerby-bom = { module = "org.apache.kerby:kerby-bom", version.ref = "kerby" }
+
+jakarta-jws-api = { module = "jakarta.jws:jakarta.jws-api", version.ref = "jakartaJws" }
+ibm-mq-jakarta-client = { module = "com.ibm.mq:com.ibm.mq.jakarta.client", version.ref = "ibmMq" }
+woodstox-core = { module = "com.fasterxml.woodstox:woodstox-core", version.ref = "woodstox" }
+oauth2-oidc-sdk = { module = "com.nimbusds:oauth2-oidc-sdk", version.ref = "nimbusOidcSdk" } #Брать версию как в спринге. Перестал поставляться в зависимостях у спринга
+nimbus-jose-jwt = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbusJoseJwt" } #Брать версию как в спринге. Перестал поставляться в зависимостях у спринга
+nv-i18n = { module = "com.neovisionaries:nv-i18n", version.ref = "nvi18n" }
+threeten-extra = { module = "org.threeten:threeten-extra", version.ref = "threeten" }
+pdfbox = { module = "org.apache.pdfbox:pdfbox", version.ref = "pdfbox" }
+# https://github.com/spring-projects/spring-data-jpa/blob/2.7.x/pom.xml#L33
+hypersistence-utils-hibernate55 = { module = "io.hypersistence:hypersistence-utils-hibernate-55", version.ref = "hibernateTypes" }
+hypersistence-utils-hibernate60 = { module = "io.hypersistence:hypersistence-utils-hibernate-60", version.ref = "hibernateTypes" }
+hypersistence-utils-hibernate62 = { module = "io.hypersistence:hypersistence-utils-hibernate-62", version.ref = "hibernateTypes" }
+hypersistence-utils-hibernate63 = { module = "io.hypersistence:hypersistence-utils-hibernate-63", version.ref = "hibernateTypes" }
+jasperreports = { module = "net.sf.jasperreports:jasperreports", version.ref = "jasperReports" }
+freemarker = { module = "org.freemarker:freemarker", version.ref = "freemarker" }
+logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstashLogbackEncoder" }
+shedlock-provider-jdbc = { module = "net.javacrumbs.shedlock:shedlock-provider-jdbc", version.ref = "shedlock" } # Отсутствует в BOM от shedlock
+cron-utils = { module = "com.cronutils:cron-utils", version.ref = "cronUtils" }
+jasypt = { module = "org.jasypt:jasypt", version.ref = "jasypt" }
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version.ref = "confluent" }
+poi = { module = "org.apache.poi:poi", version.ref = "apachePoi" }
+poi-ooxml = { module = "org.apache.poi:poi-ooxml", version.ref = "apachePoi" }
+fastexcel = { module = "org.dhatim:fastexcel", version.ref = "fastExcel" }
+fastexcel-reader = { module = "org.dhatim:fastexcel-reader", version.ref = "fastExcel" }
+lettuce-core = { module = "io.lettuce:lettuce-core", version.ref = "lettuce" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+juniversalchardet = { module = "com.github.albfernandez:juniversalchardet", version.ref = "jUniversalChardet" }
+jaxb-plugins-runtime = { module = "org.jvnet.jaxb:jaxb-plugins-runtime", version.ref = "jvnetJaxb" }
+jaxb-plugins = { module = "org.jvnet.jaxb:jaxb-plugins", version.ref = "jvnetJaxb" }
+apache-httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "apacheHttpClient4" }
+apache-httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "apacheHttpClient5" }
+xstream = { module = "com.thoughtworks.xstream:xstream", version.ref = "xstreamJava8" }
+micrometer-context-propagation = { module = "io.micrometer:context-propagation", version.ref = "micrometerContextPropagation" }
+apacheCommonsText = { module = "org.apache.commons:commons-text", version.ref = "apacheCommonsText" }
+
+jobrunr = { module = "org.jobrunr:jobrunr", version.ref = "jobrunr" }
+jobrunr-spring-boot3-starter = { module = "org.jobrunr:jobrunr-spring-boot-3-starter", version.ref = "jobrunr" }
+jobrunr-kotlin19-support = { module = "org.jobrunr:jobrunr-kotlin-1.9-support", version.ref = "jobrunr" }
+jobrunr-kotlin20-support = { module = "org.jobrunr:jobrunr-kotlin-2.0-support", version.ref = "jobrunr" }
+
+greenmail = { module = "com.icegreen:greenmail", version.ref = "greenmail" }
+greenmail-spring = { module = "com.icegreen:greenmail-spring", version.ref = "greenmail" }
+greenmail-junit5 = { module = "com.icegreen:greenmail-junit5", version.ref = "greenmail" }
+
+quartz-scheduler = { module = "org.quartz-scheduler:quartz", version.ref = "quartz" }
+
+kryo = { module = "com.esotericsoftware:kryo", version.ref = "kryoVersion" }
+kryo-library = { module = "com.esotericsoftware.kryo:kryo5", version.ref = "kryoVersion" }
+
+# --> testing
+
+testcontainers-redis = { module = "com.redis:testcontainers-redis", version.ref = "testcontainers-redis" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit5" }
+
+testng = { module = "org.testng:testng", version.ref = "testng" }
+springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springMockk" }
+wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
+
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+# <-- testing
+
+[plugins]
+springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
+asciidoctor = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctor" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombok" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarQube" }
+wsdl2java = { id = "com.github.bjornvester.wsdl2java", version.ref = "wsdl2java" }
+xjc = { id = "com.github.bjornvester.xjc", version.ref = "xjc" }
+cyclonedxBom = { id = "org.cyclonedx.bom", version.ref = "cyclonedxBom" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlin-noarg = { id = "org.jetbrains.kotlin.plugin.noarg", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-lombok = { id = "org.jetbrains.kotlin.plugin.lombok", version.ref = "kotlin" }

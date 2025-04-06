@@ -4,52 +4,53 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "dependency-hub"
 
-project("multiplatform-client") {
-    project("multiplatform-client-platform") {
-        include("multiplatform-client-bom")
-        include("multiplatform-client-toml")
-    }
-    project("multiplatform-client-android-platform") {
-        include("multiplatform-client-android-bom")
-        include("multiplatform-client-android-toml")
-    }
-    project("multiplatform-client-ios-platform") {
-        include("multiplatform-client-ios-bom")
-        include("multiplatform-client-ios-toml")
-    }
-    project("multiplatform-client-web-platform") {
-        include("multiplatform-client-web-bom")
-        include("multiplatform-client-web-toml")
-    }
-    project("multiplatform-client-desktop-platform") {
-        include("multiplatform-client-desktop-bom")
-        include("multiplatform-client-desktop-toml")
+project("client-platform") {
+    project("multiplatform-client") {
+        project("multiplatform-client-platform") {
+            include("multiplatform-client-bom")
+            include("multiplatform-client-toml")
+        }
+        project("multiplatform-client-android-platform") {
+            include("multiplatform-client-android-bom")
+            include("multiplatform-client-android-toml")
+        }
+        project("multiplatform-client-ios-platform") {
+            include("multiplatform-client-ios-bom")
+            include("multiplatform-client-ios-toml")
+        }
+        project("multiplatform-client-web-platform") {
+            include("multiplatform-client-web-bom")
+            include("multiplatform-client-web-toml")
+        }
+        project("multiplatform-client-desktop-platform") {
+            include("multiplatform-client-desktop-bom")
+            include("multiplatform-client-desktop-toml")
+        }
     }
 }
 
-project("server-jvm-platform") {
+project("backend-platform") {
     project("spring-jvm-platform") {
-        include("spring-jvm8-bom")
-        include("spring-jvm8-toml")
-        include("spring-jvm8-plugin-toml")
+        project("spring-jvm8") {
+            include("spring-jvm8-bom")
+            include("spring-jvm8-toml")
+        }
 
-        include("spring-jvm11-bom")
-        include("spring-jvm11-toml")
-        include("spring-jvm11-plugin-toml")
+        project("spring-jvm11") {
+            include("spring-jvm11-bom")
+            include("spring-jvm11-toml")
+        }
 
-        include("spring-jvm17-bom")
-        include("spring-jvm17-toml")
-        include("spring-jvm17-plugin-toml")
+        project("spring-jvm17") {
+            include("spring-jvm17-bom")
+            include("spring-jvm17-toml")
+        }
 
-        include("spring-jvm21-bom")
-        include("spring-jvm21-toml")
-        include("spring-jvm21-plugin-toml")
+        project("spring-jvm21") {
+            include("spring-jvm21-bom")
+            include("spring-jvm21-toml")
+        }
     }
-}
-
-project("gradle-plugins-platform") {
-    include("gradle-plugins-bom")
-    include("gradle-plugins-toml")
 }
 
 project("gradle-plugins-dev-platform") {
@@ -82,28 +83,30 @@ dependencyResolutionManagement {
     }
 
     versionCatalogs {
-        create("coreLibs") {
-            from(files("gradle/versions/core.versions.toml"))
+        create("kmmClient") {
+            from(files("gradle/versions/client/kmm-client.versions.toml"))
+        }
+        create("kmmClientAndroid") {
+            from(files("gradle/versions/client/kmm-client-android.versions.toml"))
+        }
+        create("kmmClientDesktop") {
+            from(files("gradle/versions/client/kmm-client-desktop.versions.toml"))
+        }
+        create("kmmClientIos") {
+            from(files("gradle/versions/client/kmm-client-ios.versions.toml"))
+        }
+        create("kmmClientWeb") {
+            from(files("gradle/versions/client/kmm-client-web.versions.toml"))
         }
 
-        create("kotlinLibs") {
-            from(files("gradle/versions/kotlin.versions.toml"))
+        create("backendSpring5") {
+            from(files("gradle/versions/backend/backend-spring5.versions.toml"))
         }
-
-        create("springLibs") {
-            from(files("gradle/versions/spring.versions.toml"))
+        create("backendSpring") {
+            from(files("gradle/versions/backend/backend-spring.versions.toml"))
         }
-
-        create("androidLibs") {
-            from(files("gradle/versions/android.versions.toml"))
-        }
-
-        create("testingLibs") {
-            from(files("gradle/versions/testing.versions.toml"))
-        }
-
-        create("gradlePlugins") {
-            from(files("gradle/versions/plugins.versions.toml"))
+        create("gradlePluginsDevelopment") {
+            from(files("gradle/versions/plugin/gradle-plugins-development.versions.toml"))
         }
     }
 }
