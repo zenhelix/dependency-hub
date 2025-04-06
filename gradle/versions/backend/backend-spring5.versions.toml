@@ -1,0 +1,190 @@
+[versions]
+# --> spring
+springBoot2 = "2.7.18"
+springCloudSpringBoot2 = "2021.0.9" # 2021.0.x aka Jubilee	2.6.x, 2.7.x (Starting with 2021.0.3)
+springSecurityKerberosSpring5 = "1.0.1.RELEASE"
+ibmMqStarterSpringBoot2 = "2.7.18" # 2.7.x for spring boot 2.7.x
+liquibaseR2dbcStarterSpringBoot2 = "2.7.15"
+springDocSpring5 = "1.8.0" # 1.8.x for spring boot 2
+wiremockStarter = "3.9.0"
+# <-- spring
+
+# --> kotlin
+kotlin = "1.9.24"
+coroutines = "1.8.1"
+
+kotlinLogging = "6.0.9"
+# <-- kotlin
+
+# --> testing
+testngJava8 = "7.5.1" # 7.5.1 is last version for java 8
+testng = "7.11.0"
+junit5 = "5.12.1"
+springMockkSpring5 = "3.1.2"
+wiremockJava8 = "2.35.1" # 2.x.x for java 8
+wiremock = "3.12.1"
+testcontainers = "1.20.6"
+testcontainers-redis = "2.2.4"
+mockitoKotlin = "5.4.0"
+awaitility = "4.2.2"
+# <-- testing
+
+kerb4jJava8 = "0.1.4" # 0.2.x+ for java 17
+logstashLogbackEncoderJava8 = "7.4"
+logstashLogbackEncoder = "8.0"
+#https://github.com/ibm-messaging/mq-jms-spring/blob/master/build.gradle#L40
+ibmMq = "9.4.2.0"
+jasperReports = "7.0.2"
+hibernateTypes = "3.9.5"
+freemarker = "2.3.33"
+nvi18n = "1.29"
+nimbusJoseJwtSpring5 = "9.24.4"
+nimbusOidcSdkSpring5 = "9.43.3"
+logbook = "3.11.0"
+threeten = "1.8.0"
+pdfbox = "3.0.3"
+shedlockSpring5 = "4.47.0" # 4.x.x for java 8, spring 5
+resilience4jJava8 = "1.7.0"
+cronUtils = "9.2.1"
+transactionOutboxSpring5 = "5.2.337" # 5.2.337 is last version for spring 5, jdk 11
+woodstox = "7.1.0"
+jasypt = "1.9.3"
+dbScheduler = "15.3.0"
+confluent = "7.7.1"
+apachePoi = "5.3.0"
+fastExcel = "0.18.4"
+lettuce = "6.5.5.RELEASE"
+kerby = "2.1.0"
+guava = "33.4.6-jre"
+jUniversalChardet = "2.5.0"
+cxfJava8 = "3.6.3" # Версия 4.x.x+ for 11 jdk
+xstreamJava8 = "1.4.20" # 1.5 will require Java 11
+jvnetJaxbJava8 = "3.0.2"
+jvnetJaxb = "4.0.8"
+apacheHttpClient4 = "4.5.14"
+apacheHttpClient5 = "5.4"
+apacheCommonsText = "1.12.0" # Следить за версиями между lang3 https://github.com/apache/commons-text/blob/master/pom.xml#L89
+jobrunr = "7.4.1"
+kryoVersion = "5.6.2"
+
+asciidoctor = "4.0.4"
+lombok = "8.13.1"
+sonarQube = "6.1.0.5360"
+dokka = "2.0.0"
+cyclonedxBom = "2.2.0"
+
+[libraries]
+
+# --> spring
+
+spring-boot-dependencies-spring-boot2 = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot2" }
+spring-cloud-dependencies-spring-boot2 = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloudSpringBoot2" }
+
+spring-security-kerberos-core-spring5 = { module = "org.springframework.security.kerberos:spring-security-kerberos-core", version.ref = "springSecurityKerberosSpring5" }
+spring-security-kerberos-web-spring5 = { module = "org.springframework.security.kerberos:spring-security-kerberos-web", version.ref = "springSecurityKerberosSpring5" }
+
+mq-jms-spring-boot-starter-spring-boot2 = { module = "com.ibm.mq:mq-jms-spring-boot-starter", version.ref = "ibmMqStarterSpringBoot2" }
+
+springdoc-openapi-webmvc-core-spring5 = { module = "org.springdoc:springdoc-openapi-webmvc-core", version.ref = "springDocSpring5" }
+springdoc-openapi-common-spring5 = { module = "org.springdoc:springdoc-openapi-common", version.ref = "springDocSpring5" }
+springdoc-openapi-ui-spring5 = { module = "org.springdoc:springdoc-openapi-ui", version.ref = "springDocSpring5" }
+springdoc-openapi-webflux-ui-spring5 = { module = "org.springdoc:springdoc-openapi-webflux-ui", version.ref = "springDocSpring5" }
+springdoc-openapi-security-spring5 = { module = "org.springdoc:springdoc-openapi-security", version.ref = "springDocSpring5" }
+springdoc-openapi-kotlin-spring5 = { module = "org.springdoc:springdoc-openapi-kotlin", version.ref = "springDocSpring5" }
+
+kerb4j-server-spring-security-java8 = { module = "com.kerb4j:kerb4j-server-spring-security", version.ref = "kerb4jJava8" }
+
+liquibase-r2dbc-spring-boot-starter-spring-boot2 = { module = "io.github.daggerok:liquibase-r2dbc-spring-boot-starter", version.ref = "liquibaseR2dbcStarterSpringBoot2" }
+db-scheduler-spring-boot-starter = { module = "com.github.kagkarlsson:db-scheduler-spring-boot-starter", version.ref = "dbScheduler" }
+
+transactionoutbox-core-java8 = { module = "com.gruelbox:transactionoutbox-core", version.ref = "transactionOutboxSpring5" }
+transactionoutbox-spring-java8 = { module = "com.gruelbox:transactionoutbox-spring", version.ref = "transactionOutboxSpring5" }
+transactionoutbox-jackson-java8 = { module = "com.gruelbox:transactionoutbox-jackson", version.ref = "transactionOutboxSpring5" }
+# <-- spring
+
+# --> kotlin
+
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+kotlinx-coroutines-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom", version.ref = "coroutines" }
+
+kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlinLogging" }
+
+# <-- kotlin
+
+logbook-bom = { module = "org.zalando:logbook-bom", version.ref = "logbook" }
+shedlock-bom-java8 = { module = "net.javacrumbs.shedlock:shedlock-bom", version.ref = "shedlockSpring5" }
+resilience4j-bom-java8 = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "resilience4jJava8" }
+cxf-bom-java8 = { module = "org.apache.cxf:cxf-bom", version.ref = "cxfJava8" }
+kerby-bom = { module = "org.apache.kerby:kerby-bom", version.ref = "kerby" }
+
+ibm-mq-allclient = { module = "com.ibm.mq:com.ibm.mq.allclient", version.ref = "ibmMq" }
+woodstox-core = { module = "com.fasterxml.woodstox:woodstox-core", version.ref = "woodstox" }
+# https://github.com/spring-projects/spring-security/blob/5.8.x/gradle/libs.versions.toml#L25
+oauth2-oidc-sdk-spring5 = { module = "com.nimbusds:oauth2-oidc-sdk", version.ref = "nimbusOidcSdkSpring5" } #Брать версию как в спринге. Перестал поставляться в зависимостях у спринга
+nimbus-jose-jwt-spring5 = { module = "com.nimbusds:nimbus-jose-jwt", version.ref = "nimbusJoseJwtSpring5" } #Брать версию как в спринге. Перестал поставляться в зависимостях у спринга
+nv-i18n = { module = "com.neovisionaries:nv-i18n", version.ref = "nvi18n" }
+threeten-extra = { module = "org.threeten:threeten-extra", version.ref = "threeten" }
+pdfbox = { module = "org.apache.pdfbox:pdfbox", version.ref = "pdfbox" }
+# https://github.com/spring-projects/spring-data-jpa/blob/2.7.x/pom.xml#L33
+hypersistence-utils-hibernate55 = { module = "io.hypersistence:hypersistence-utils-hibernate-55", version.ref = "hibernateTypes" }
+jasperreports = { module = "net.sf.jasperreports:jasperreports", version.ref = "jasperReports" }
+freemarker = { module = "org.freemarker:freemarker", version.ref = "freemarker" }
+logstash-logback-encoder-java8 = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstashLogbackEncoderJava8" }
+logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstashLogbackEncoder" }
+shedlock-provider-jdbc-java8 = { module = "net.javacrumbs.shedlock:shedlock-provider-jdbc", version.ref = "shedlockSpring5" } # Отсутствует в BOM от shedlock
+cron-utils = { module = "com.cronutils:cron-utils", version.ref = "cronUtils" }
+jasypt = { module = "org.jasypt:jasypt", version.ref = "jasypt" }
+kafka-avro-serializer = { module = "io.confluent:kafka-avro-serializer", version.ref = "confluent" }
+poi = { module = "org.apache.poi:poi", version.ref = "apachePoi" }
+poi-ooxml = { module = "org.apache.poi:poi-ooxml", version.ref = "apachePoi" }
+fastexcel = { module = "org.dhatim:fastexcel", version.ref = "fastExcel" }
+fastexcel-reader = { module = "org.dhatim:fastexcel-reader", version.ref = "fastExcel" }
+lettuce-core = { module = "io.lettuce:lettuce-core", version.ref = "lettuce" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+juniversalchardet = { module = "com.github.albfernandez:juniversalchardet", version.ref = "jUniversalChardet" }
+jaxb-plugins-runtime-java8 = { module = "org.jvnet.jaxb:jaxb-plugins-runtime", version.ref = "jvnetJaxbJava8" }
+jaxb-plugins-java8 = { module = "org.jvnet.jaxb:jaxb-plugins", version.ref = "jvnetJaxbJava8" }
+jaxb-plugins-runtime = { module = "org.jvnet.jaxb:jaxb-plugins-runtime", version.ref = "jvnetJaxb" }
+jaxb-plugins = { module = "org.jvnet.jaxb:jaxb-plugins", version.ref = "jvnetJaxb" }
+apache-httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "apacheHttpClient4" }
+apache-httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "apacheHttpClient5" }
+xstream = { module = "com.thoughtworks.xstream:xstream", version.ref = "xstreamJava8" }
+apacheCommonsText = { module = "org.apache.commons:commons-text", version.ref = "apacheCommonsText" }
+
+jobrunr = { module = "org.jobrunr:jobrunr", version.ref = "jobrunr" }
+jobrunr-spring-boot2-starter = { module = "org.jobrunr:jobrunr-spring-boot-2-starter", version.ref = "jobrunr" }
+jobrunr-kotlin19-support = { module = "org.jobrunr:jobrunr-kotlin-1.9-support", version.ref = "jobrunr" }
+
+kryo = { module = "com.esotericsoftware:kryo", version.ref = "kryoVersion" }
+kryo-library = { module = "com.esotericsoftware.kryo:kryo5", version.ref = "kryoVersion" }
+
+# --> testing
+
+testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
+testcontainers-redis = { module = "com.redis:testcontainers-redis", version.ref = "testcontainers-redis" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit5" }
+
+testng-java8 = { module = "org.testng:testng", version.ref = "testngJava8" }
+testng = { module = "org.testng:testng", version.ref = "testng" }
+springmockk-spring5 = { module = "com.ninja-squad:springmockk", version.ref = "springMockkSpring5" }
+wiremock-jre8 = { module = "com.github.tomakehurst:wiremock-jre8", version.ref = "wiremockJava8" }
+wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
+
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+# <-- testing
+
+[plugins]
+springBoot2 = { id = "org.springframework.boot", version.ref = "springBoot2" }
+asciidoctor = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctor" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombok" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarQube" }
+cyclonedxBom = { id = "org.cyclonedx.bom", version.ref = "cyclonedxBom" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlin-noarg = { id = "org.jetbrains.kotlin.plugin.noarg", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-lombok = { id = "org.jetbrains.kotlin.plugin.lombok", version.ref = "kotlin" }
