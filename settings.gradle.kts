@@ -6,9 +6,9 @@ rootProject.name = "dependency-hub"
 
 project("client-platform") {
     project("multiplatform-client") {
-        project("multiplatform-client-platform") {
-            include("multiplatform-client-bom")
-            include("multiplatform-client-toml")
+        project("multiplatform-client-all-platform") {
+            include("multiplatform-client-all-bom")
+            include("multiplatform-client-all-toml")
         }
         project("multiplatform-client-android-platform") {
             include("multiplatform-client-android-bom")
@@ -18,9 +18,13 @@ project("client-platform") {
             include("multiplatform-client-ios-bom")
             include("multiplatform-client-ios-toml")
         }
-        project("multiplatform-client-web-platform") {
-            include("multiplatform-client-web-bom")
-            include("multiplatform-client-web-toml")
+        project("multiplatform-client-js-platform") {
+            include("multiplatform-client-js-bom")
+            include("multiplatform-client-js-toml")
+        }
+        project("multiplatform-client-wasm-platform") {
+            include("multiplatform-client-wasm-bom")
+            include("multiplatform-client-wasm-toml")
         }
         project("multiplatform-client-desktop-platform") {
             include("multiplatform-client-desktop-bom")
@@ -83,8 +87,8 @@ dependencyResolutionManagement {
     }
 
     versionCatalogs {
-        create("kmmClient") {
-            from(files("gradle/versions/client/kmm-client.versions.toml"))
+        create("kmmClientAll") {
+            from(files("gradle/versions/client/kmm-client-all.versions.toml"))
         }
         create("kmmClientAndroid") {
             from(files("gradle/versions/client/kmm-client-android.versions.toml"))
