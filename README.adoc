@@ -6,68 +6,43 @@
 A centralized hub 🎯 for all your Kotlin projects!
 📦 This powerhouse consolidates shared libraries, tools, and frameworks, making dependency management a breeze.
 
+== Project Structure
+
+This project is organized into several major components:
+
+=== Client Platforms
+* *Multiplatform Client*: Dependency management for Kotlin Multiplatform applications
+** Android platform
+** iOS platform
+** Desktop platform
+** Web platform (JS)
+** Web platform (Wasm)
+** All platforms combined
+
+=== Backend Platforms
+* *Spring JVM Platform*: Dependency management for Spring Framework applications
+** JVM 8
+** JVM 11
+** JVM 17
+** JVM 21
+
+=== Gradle Plugin Development
+* Dependency management for Gradle plugin development
+
+=== Distribution Formats
+
+Each platform is provided in two formats:
+
+. *BOM (Bill of Materials)*: Java Platform modules that define consistent dependency versions
+. *TOML (Version Catalog)*: Gradle's version catalog format for centralized dependency declarations
+
 == Installation 🛠️ And Usage 🚀
-
-=== gradle-plugins
-
-.gradle-plugins-toml
-[%collapsible]
-====
-
-*Installation*
-
-.settings.gradle.kts
-[source,kotlin,subs="+attributes"]
-----
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("gradlePlugins") {
-            from("io.github.zenhelix:gradle-plugins-toml:{versionPlaceholder}")
-        }
-    }
-}
-----
-
-*Usage*
-
-.build.gradle.kts
-[source,kotlin,subs="+attributes"]
-----
-plugins {
-    alias(gradlePlugins.somePlugin)
-}
-----
-
-.build.gradle.kts
-[source,kotlin,subs="+attributes"]
-----
-dependencies {
-    implementation(gradlePlugins.someDependency)
-}
-----
-
-====
-
-.gradle-plugins-bom
-[%collapsible]
-====
-*Usage*
-
-.build.gradle.kts
-[source,kotlin,subs="+attributes"]
-----
-dependencies {
-    implementation(platform("io.github.zenhelix:gradle-plugins-bom:{versionPlaceholder}"))
-}
-----
-====
 
 === gradle-plugins-dev
 
 .gradle-plugins-dev-toml
 [%collapsible]
 ====
-
 *Installation*
 
 .settings.gradle.kts
@@ -99,7 +74,6 @@ dependencies {
     implementation(gradlePluginsDev.someDependency)
 }
 ----
-
 ====
 
 .gradle-plugins-dev-bom
@@ -118,10 +92,9 @@ dependencies {
 
 === multiplatform-client-android-platform
 
-.multiplatform-client-android-platform-toml
+.multiplatform-client-android-toml
 [%collapsible]
 ====
-
 *Installation*
 
 .settings.gradle.kts
@@ -130,7 +103,7 @@ dependencies {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            from("io.github.zenhelix:multiplatform-client-android-platform-toml:{versionPlaceholder}")
+            from("io.github.zenhelix:multiplatform-client-android-toml:{versionPlaceholder}")
         }
     }
 }
@@ -153,10 +126,9 @@ dependencies {
     implementation(libs.someDependency)
 }
 ----
-
 ====
 
-.multiplatform-client-android-platform-bom
+.multiplatform-client-android-bom
 [%collapsible]
 ====
 *Usage*
@@ -165,7 +137,55 @@ dependencies {
 [source,kotlin,subs="+attributes"]
 ----
 dependencies {
-    implementation(platform("io.github.zenhelix:multiplatform-client-android-platform-bom:{versionPlaceholder}"))
+    implementation(platform("io.github.zenhelix:multiplatform-client-android-bom:{versionPlaceholder}"))
+}
+----
+====
+
+=== spring-jvm21-platform
+
+.spring-jvm21-toml
+[%collapsible]
+====
+*Installation*
+
+.settings.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("springLibs") {
+            from("io.github.zenhelix:spring-jvm21-toml:{versionPlaceholder}")
+        }
+    }
+}
+----
+
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+plugins {
+    alias(springLibs.plugins.springBoot)
+}
+
+dependencies {
+    implementation(springLibs.spring.boot.starter.web)
+}
+----
+====
+
+.spring-jvm21-bom
+[%collapsible]
+====
+*Usage*
+
+.build.gradle.kts
+[source,kotlin,subs="+attributes"]
+----
+dependencies {
+    implementation(platform("io.github.zenhelix:multiplatform-client-android-bom:{versionPlaceholder}"))
 }
 ----
 ====
