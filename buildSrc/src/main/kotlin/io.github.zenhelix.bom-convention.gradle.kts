@@ -17,6 +17,7 @@ publishing {
                 username = System.getProperty("MAVEN_SONATYPE_USERNAME") ?: System.getenv("MAVEN_SONATYPE_USERNAME")
                 password = System.getProperty("MAVEN_SONATYPE_TOKEN") ?: System.getenv("MAVEN_SONATYPE_TOKEN")
             }
+            uploader { aggregate { modulePublications = true } }
         }
     }
 
