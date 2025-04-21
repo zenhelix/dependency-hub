@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.zenhelix:maven-central-publish:0.5.0")
+    implementation("io.github.zenhelix:maven-central-publish:0.7.0")
 }
