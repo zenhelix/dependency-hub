@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   release:
-    uses: zenhelix/ci-workflows/.github/workflows/kotlin-library-release.yml@v4
+    uses: zenhelix/ci-workflows/.github/workflows/kotlin-library-release.yml@v5
     with:
       java-version: '21'
       publish-command: './gradlew publish -Pversion=''${{ github.ref_name }}'''
